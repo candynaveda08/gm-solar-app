@@ -10,6 +10,7 @@ function App() {
     bill: "",
     date: "",
     time: "",
+    notes: "",
   });
   const [showDashboard, setShowDashboard] = useState(false);
   if (showDashboard) {
@@ -179,9 +180,22 @@ function App() {
           onChange={handleChange}
           style={inputStyle}
         />
+        <textarea
+  placeholder="Customer Notes"
+  value={form.notes}
+  onChange={(e) => setForm({ ...form, notes: e.target.value })}
+  style={{
+    width: "100%",
+    padding: "14px",
+    marginTop: "15px",
+    borderRadius: "10px",
+    border: "1px solid #ccc"
+  }}
+  />
+
 
         <button onClick={handleSubmit} style={buttonStyle}>
-          Get My Free Solar Quote
+          Get My Free Solar Quote. 
         </button>
         <button onClick={() => setShowDashboard(true)} style={buttonStyle}>
   View Leads Dashboard
