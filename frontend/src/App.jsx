@@ -32,6 +32,8 @@ function App() {
 
     alert("Thank you! We will contact you soon.");
   };
+alert("Lead enviado correctamente");
+
 
   return (
     <div style={pageStyle}>

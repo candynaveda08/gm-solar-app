@@ -15,7 +15,9 @@ app.post("/api/leads", (req, res) => {
 
   console.log("Nuevo cliente:", newLead);
 
-  res.json({ message: "Guardado", lead: newLead });
+  res.json({
+    message: "Lead guardado correctamente",
+  });
 });
 
 app.get("/api/leads", (req, res) => {
