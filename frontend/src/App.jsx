@@ -24,7 +24,7 @@ function App() {
   };
 
   const handleSubmit = async () => {
-    await fetch("http://localhost:5000/api/leads", {
+    await fetch("https://gm-solar-app.onrender.com/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form)
