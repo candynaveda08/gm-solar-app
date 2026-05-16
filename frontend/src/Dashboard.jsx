@@ -4,27 +4,40 @@ function Dashboard() {
   const [leads, setLeads] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/leads")
-      .then(res => res.json())
-      .then(data => setLeads(data))
-      .catch(err => console.error(err));
+    fetch("https://gm-solar-app.onrender.com/api/leads")
+      .then((res) => res.json())
+      .then((data) => setLeads(data))
+      .catch((err) => console.error(err));
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Clients</h1>
+    <div style={{ padding: "30px", fontFamily: "Arial" }}>
+      <h1>FLF Solar Dashboard</h1>
 
       {leads.length === 0 ? (
-        <p>No clients yet</p>
+        <p>No hay clientes todavía.</p>
       ) : (
-        leads.map((lead, i) => (
-          <div key={i}>
-            <p>{lead.name}</p>
-            <p>{lead.phone}</p>
-            <p>{lead.address}</p>
-            <hr />
-          </div>
-        ))
+        <table border="1" cellPadding="10">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Teléfono</th>
+              <th>Dirección</th>
+              <th>Servicio</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {leads.map((lead, index) => (
+              <tr key={index}>
+                <td>{lead.name}</td>
+                <td>{lead.phone}</td>
+                <td>{lead.address}</td>
+                <td>{lead.service}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
     </div>
   );

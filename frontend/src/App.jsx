@@ -1,6 +1,20 @@
 import { useState } from "react";
+import Dashboard from "./Dashboard";
+import solarImage from "./solar.jpeg";
+import Home from "./Home";
+import Quote from "./Quote";
 
 function App() {
+  if (window.location.pathname === "/") {
+  return <Home />;
+  if (window.location.pathname === "/quote") {
+  return <Quote />;
+}
+}
+  if (window.location.pathname === "/dashboard") {
+    return <Dashboard />;
+  }
+
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -8,16 +22,8 @@ function App() {
     bill: "",
     service: "",
     date: "",
-    time: ""
+    time: "",
   });
-
-  const services = [
-    "Cleaning & Maintenance",
-    "Repairs & Troubleshooting",
-    "Battery & Backup",
-    "Installation & Reinstallation",
-    "Upgrades & Electrical"
-  ];
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,25 +33,27 @@ function App() {
     await fetch("https://gm-solar-app.onrender.com/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form)
+      body: JSON.stringify(form),
     });
 
     alert("Thank you! We will contact you soon.");
   };
-alert("Lead enviado correctamente");
-
 
   return (
     <div style={pageStyle}>
       <div style={cardStyle}>
+        
+
         <h1 style={titleStyle}>FLF Solar</h1>
         <p style={subtitleStyle}>
-          Professional solar services for your home or business. Request your free quote in minutes.
+          Professional solar services for your home or business.
         </p>
 
         <select name="service" onChange={handleChange} style={inputStyle}>
           <option>Select Service</option>
-          {services.map((s, i) => <option key={i}>{s}</option>)}
+          <option>Solar Panel Cleaning</option>
+          <option>System Maintenance</option>
+          <option>Smart Monitoring</option>
         </select>
 
         <input name="name" placeholder="Full Name" onChange={handleChange} style={inputStyle} />
@@ -58,44 +66,42 @@ alert("Lead enviado correctamente");
         <button onClick={handleSubmit} style={buttonStyle}>
           Get My Free Solar Quote
         </button>
-
-        <p style={smallText}>🔒 Your information is safe and secure</p>
       </div>
     </div>
   );
 }
 
 const pageStyle = {
-  fontFamily: "Arial",
   minHeight: "100vh",
-  background: "linear-gradient(135deg, #f6c23e, #0b2a5b)",
+  background: "linear-gradient(to right, #d4a017, #0b2c6b)",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  padding: "20px"
+  padding: "30px",
 };
 
 const cardStyle = {
   background: "white",
-  padding: "35px",
-  borderRadius: "20px",
-  width: "450px",
-  boxShadow: "0 15px 35px rgba(0,0,0,0.2)",
-  textAlign: "center"
+  padding: "25px",
+  borderRadius: "22px",
+  width: "430px",
+  boxShadow: "0 15px 40px rgba(0,0,0,0.25)",
+};
+
+const imageStyle = {
+  width: "100%",
+  borderRadius: "18px",
+  marginBottom: "20px",
 };
 
 const titleStyle = {
-  fontSize: "34px",
-  color: "#0b2a5b",
-  marginBottom: "10px",
-  fontWeight: "bold"
+  textAlign: "center",
+  color: "#0b2c6b",
 };
 
 const subtitleStyle = {
+  textAlign: "center",
   color: "#555",
-  fontSize: "15px",
-  marginBottom: "20px",
-  lineHeight: "1.5"
 };
 
 const inputStyle = {
@@ -104,25 +110,18 @@ const inputStyle = {
   marginBottom: "12px",
   borderRadius: "10px",
   border: "1px solid #ccc",
-  fontSize: "15px"
+  fontSize: "15px",
 };
 
 const buttonStyle = {
   width: "100%",
-  padding: "14px",
-  background: "#f6c23e",
-  color: "#0b2a5b",
+  padding: "15px",
+  background: "#f4b400",
+  color: "#0b2c6b",
   border: "none",
   borderRadius: "10px",
-  fontSize: "16px",
   fontWeight: "bold",
-  cursor: "pointer"
-};
-
-const smallText = {
-  marginTop: "18px",
-  fontSize: "13px",
-  color: "#777"
+  fontSize: "16px",
 };
 
 export default App;
