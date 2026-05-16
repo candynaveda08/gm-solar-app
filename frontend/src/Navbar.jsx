@@ -1,18 +1,31 @@
+import logo from "./flf-logo.png.jpeg";
+
 function Navbar() {
   return (
     <div style={navStyle}>
-      <h2 style={logoStyle}>FLF Solar</h2>
+      <div style={logoContainer}>
+        <img src={logo} alt="FLF Solar" style={logoStyle} />
+      </div>
 
       <div>
-        <button style={buttonStyle} onClick={() => (window.location.href = "/")}>
+        <button
+          style={buttonStyle}
+          onClick={() => (window.location.href = "/")}
+        >
           Home
         </button>
 
-        <button style={buttonStyle} onClick={() => (window.location.href = "/quote")}>
+        <button
+          style={buttonStyle}
+          onClick={() => (window.location.href = "/quote")}
+        >
           Get Quote
         </button>
 
-        <button style={buttonStyle} onClick={() => (window.location.href = "/dashboard")}>
+        <button
+          style={buttonStyle}
+          onClick={() => (window.location.href = "/dashboard")}
+        >
           Dashboard
         </button>
       </div>
@@ -21,25 +34,30 @@ function Navbar() {
 }
 
 const navStyle = {
+  backgroundColor: "#0d2b7e",
+  padding: "15px 30px",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: "15px 40px",
-  background: "#0f2c6e",
-  color: "white",
+};
+
+const logoContainer = {
+  display: "flex",
+  alignItems: "center",
 };
 
 const logoStyle = {
-  margin: 0,
+  width: "90px",
+  borderRadius: "12px",
 };
 
 const buttonStyle = {
-  marginLeft: "15px",
-  padding: "10px 18px",
-  borderRadius: "8px",
+  backgroundColor: "#f5b800",
+  color: "#0d2b7e",
   border: "none",
-  background: "#f4b400",
-  color: "#0f2c6e",
+  padding: "12px 20px",
+  marginLeft: "15px",
+  borderRadius: "10px",
   fontWeight: "bold",
   cursor: "pointer",
 };

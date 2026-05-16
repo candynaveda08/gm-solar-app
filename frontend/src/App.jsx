@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Dashboard from "./Dashboard";
-import solarImage from "./solar.jpeg";
+import solarImage from "./flf-logo.png.jpeg";
 import Home from "./Home";
 import Quote from "./Quote";
 
