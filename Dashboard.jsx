@@ -4,11 +4,12 @@ function Dashboard() {
   const [leads, setLeads] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/leads")
+    fetch("https://gm-solar-app-1.onrender.com/api/leads")
       .then((res) => res.json())
       .then((data) => setLeads(data))
       .catch((error) => console.error(error));
   }, []);
+  
 
   return (
     <div style={{ padding: "20px" }}>
