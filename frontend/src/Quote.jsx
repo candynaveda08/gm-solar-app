@@ -1,27 +1,28 @@
-const handleSubmit = async (e) => {
-  e.preventDefault();
+function Quote() {
+  return (
+    <div style={{ padding: "40px", textAlign: "center" }}>
+      <h1>Free Solar Quote</h1>
 
-  try {
-    const response = await fetch(
-      "https://gm-solar-app-1.onrender.com/api/leads",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      }
-    );
+      <input placeholder="Full Name" />
+      <br /><br />
 
-    const data = await response.json();
+      <input placeholder="Phone Number" />
+      <br /><br />
 
-    alert("Quote Submitted Successfully!");
+      <input placeholder="Address" />
+      <br /><br />
 
-    console.log(data);
+      <select>
+        <option>Select Service</option>
+        <option>Solar Panel Cleaning</option>
+        <option>Battery Installation</option>
+        <option>System Maintenance</option>
+      </select>
+      <br /><br />
 
-  } catch (error) {
-    console.log(error);
+      <button>Submit Quote</button>
+    </div>
+  );
+}
 
-    alert("Error submitting quote");
-  }
-};
+export default Quote;
