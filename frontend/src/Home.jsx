@@ -17,7 +17,7 @@ function Home() {
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <img
             src={logo}
-            alt="logo"
+            alt="Logo"
             style={{
               width: "60px",
               borderRadius: "10px",
@@ -31,7 +31,7 @@ function Home() {
 
         <div style={{ display: "flex", gap: "20px" }}>
           <a
-            href="/"
+            href="#"
             style={{
               color: "white",
               textDecoration: "none",
@@ -52,13 +52,13 @@ function Home() {
         </div>
       </div>
 
-      {/* Hero */}
+      {/* Hero Section */}
       <div
         style={{
-          backgroundColor: "#12357a",
-          padding: "60px",
-          textAlign: "center",
+          backgroundColor: "#1e3f8f",
           color: "white",
+          textAlign: "center",
+          padding: "100px 20px",
         }}
       >
         <h1
@@ -70,23 +70,23 @@ function Home() {
           Professional Solar Services
         </h1>
 
-        <p
+        <h2
           style={{
-            fontSize: "24px",
+            fontWeight: "normal",
           }}
         >
           Residential & Commercial Solar Solutions
-        </p>
+        </h2>
 
         <button
           style={{
-            padding: "15px 30px",
             backgroundColor: "#f4c430",
             border: "none",
             borderRadius: "10px",
+            padding: "15px 30px",
+            marginTop: "25px",
             fontSize: "18px",
             cursor: "pointer",
-            marginTop: "20px",
           }}
         >
           Get Free Quote
@@ -100,7 +100,13 @@ function Home() {
           textAlign: "center",
         }}
       >
-        <h2>Our Services</h2>
+        <h2
+          style={{
+            marginBottom: "40px",
+          }}
+        >
+          Our Services
+        </h2>
 
         <div
           style={{
@@ -108,7 +114,6 @@ function Home() {
             justifyContent: "center",
             gap: "20px",
             flexWrap: "wrap",
-            marginTop: "30px",
           }}
         >
           <div
@@ -150,7 +155,7 @@ function Home() {
       <div
         id="quote"
         style={{
-          backgroundColor: "#f5f5f5",
+          backgroundColor: "#f4f4f4",
           padding: "50px",
           textAlign: "center",
         }}
@@ -208,6 +213,28 @@ function Home() {
           >
             Submit
           </button>
+
+          <br />
+          <br />
+
+          <a
+            href="https://wa.me/17869731521"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <button
+              style={{
+                backgroundColor: "#25D366",
+                color: "white",
+                padding: "12px 25px",
+                border: "none",
+                borderRadius: "10px",
+                cursor: "pointer",
+              }}
+            >
+              Chat on WhatsApp
+            </button>
+          </a>
         </div>
       </div>
 
