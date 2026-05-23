@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import Lead from "./models/Lead.js";
 
 dotenv.config();
 
@@ -15,22 +16,8 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
-const leadSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  phone: String,
-  address: String,
-  service: String,
-  electricBill: String,
-  installDate: String,
-  installTime: String,
-  comments: String,
-});
-
-const Lead = mongoose.model("Lead", leadSchema);
-
 app.get("/", (req, res) => {
-  res.send("FLF Solar Backend Running");
+  res.send("GM Solar Backend Running");
 });
 
 app.post("/api/leads", async (req, res) => {
@@ -39,10 +26,17 @@ app.post("/api/leads", async (req, res) => {
 
     await newLead.save();
 
-    res.json(newLead);
+    res.status(201).json({
+      message: "Lead saved successfully",
+      lead: newLead,
+    });
+
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Error saving lead" });
+
+    res.status(500).json({
+      message: "Error saving lead",
+    });
   }
 });
 
@@ -51,9 +45,30 @@ app.get("/api/leads", async (req, res) => {
     const leads = await Lead.find();
 
     res.json(leads);
+
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Error fetching leads" });
+
+    res.status(500).json({
+      message: "Error fetching leads",
+    });
+  }
+});
+
+app.delete("/api/leads/:id", async (req, res) => {
+  try {
+    await Lead.findByIdAndDelete(req.params.id);
+
+    res.json({
+      message: "Client deleted successfully",
+    });
+
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      message: "Error deleting client",
+    });
   }
 });
 
