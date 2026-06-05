@@ -10,7 +10,7 @@ function Dashboard() {
 
   const getLeads = async () => {
     try {
-      const response = await fetch;https://gm-solar-app-1.onrender.com/api/leads
+      const response = await fetch("https://gm-solar-app-1.onrender.com/api/leads");
       const data = await response.json();
       setLeads(data);
     } catch (error) {
