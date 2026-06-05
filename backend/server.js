@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import Lead from "./models/Lead.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 dotenv.config();
 
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/admin", adminRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -23,52 +25,35 @@ app.get("/", (req, res) => {
 app.post("/api/leads", async (req, res) => {
   try {
     const newLead = new Lead(req.body);
-
     await newLead.save();
 
     res.status(201).json({
       message: "Lead saved successfully",
       lead: newLead,
     });
-
   } catch (error) {
     console.log(error);
-
-    res.status(500).json({
-      message: "Error saving lead",
-    });
+    res.status(500).json({ message: "Error saving lead" });
   }
 });
 
 app.get("/api/leads", async (req, res) => {
   try {
     const leads = await Lead.find();
-
     res.json(leads);
-
   } catch (error) {
     console.log(error);
-
-    res.status(500).json({
-      message: "Error fetching leads",
-    });
+    res.status(500).json({ message: "Error fetching leads" });
   }
 });
 
 app.delete("/api/leads/:id", async (req, res) => {
   try {
     await Lead.findByIdAndDelete(req.params.id);
-
-    res.json({
-      message: "Client deleted successfully",
-    });
-
+    res.json({ message: "Client deleted successfully" });
   } catch (error) {
     console.log(error);
-
-    res.status(500).json({
-      message: "Error deleting client",
-    });
+    res.status(500).json({ message: "Error deleting client" });
   }
 });
 
