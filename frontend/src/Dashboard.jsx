@@ -10,7 +10,7 @@ function Dashboard() {
 
   const getLeads = async () => {
     try {
-      const response = await fetch("http://localhost:5050/api/leads");
+      const response = await fetch;https://gm-solar-app-1.onrender.com/api/leads
       const data = await response.json();
       setLeads(data);
     } catch (error) {
@@ -20,7 +20,7 @@ function Dashboard() {
 
   const deleteLead = async (id) => {
     try {
-      await fetch(`http://localhost:5050/api/leads/${id}`, {
+      await fetch(`https://gm-solar-app-1.onrender.com/api/leads/${id}`, {
         method: "DELETE",
       });
 
