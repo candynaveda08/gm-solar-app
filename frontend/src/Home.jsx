@@ -29,7 +29,7 @@ function Home() {
     e.preventDefault();
 
     try {
-      await fetch("http://localhost:5050/api/leads", {
+      await fetch("https://gm-solar-app-1.onrender.com/api/leads", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
