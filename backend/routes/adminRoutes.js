@@ -5,16 +5,38 @@ const router = express.Router();
 
 router.post("/create-admin", async (req, res) => {
   try {
-    const admin = new Admin({
-      email: req.body.email,
-      password: req.body.password,
-    });
+    const { email, password } = req.body;
 
+    let admin = await Admin.findOne({ email });
+
+    if (admin) {
+      admin.password = password;
+      await admin.save();
+      return res.json({ message: "Admin updated" });
+    }
+
+    admin = new Admin({ email, password });
     await admin.save();
 
     res.json({ message: "Admin created" });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({ message: "Error creating admin" });
+  }
+});
+
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const admin = await Admin.findOne({ email });
+
+    if (!admin || admin.password !== password) {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    res.json({ message: "Login successful" });
+  } catch (error) {
+    res.status(500).json({ message: "Error logging in" });
   }
 });
 

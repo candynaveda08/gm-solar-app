@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import Lead from "./models/Lead.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import Admin from "./models/Admin.js";
 
 dotenv.config();
 
@@ -12,6 +13,26 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/admin", adminRoutes);
+app.post("/api/admin/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const admin = await Admin.findOne({ email });
+
+    if (!admin) {
+      return res.status(404).json({ message: "Admin not found" });
+    }
+
+    if (admin.password !== password) {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    res.json({ message: "Login successful" });
+
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
 
 mongoose
   .connect(process.env.MONGO_URI)
