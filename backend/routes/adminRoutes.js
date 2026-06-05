@@ -18,4 +18,27 @@ router.post("/create-admin", async (req, res) => {
   }
 });
 
+router.post("/change-password", async (req, res) => {
+  try {
+    const { email, oldPassword, newPassword } = req.body;
+
+    const admin = await Admin.findOne({ email });
+
+    if (!admin) {
+      return res.status(404).json({ message: "Admin not found" });
+    }
+
+    if (admin.password !== oldPassword) {
+      return res.status(400).json({ message: "Old password is incorrect" });
+    }
+
+    admin.password = newPassword;
+    await admin.save();
+
+    res.json({ message: "Password changed successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error changing password" });
+  }
+});
+
 export default router;
