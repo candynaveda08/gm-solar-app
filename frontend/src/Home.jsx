@@ -246,7 +246,7 @@ function Home() {
           />
 
           <input
-            type="time"
+            type=""
             name="time"
             value={formData.time}
             onChange={handleChange}
