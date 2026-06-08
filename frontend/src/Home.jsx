@@ -246,14 +246,14 @@ function Home() {
           />
 
           <input
-            type=""
+            type="time"
             name="time"
             value={formData.time}
             onChange={handleChange}
             style={{
               width: "90%",
               padding: "12px",
-              marginBottom: "20px",
+              marginBottom: "15px",
             }}
           />
 
