@@ -293,7 +293,7 @@ function Home() {
                 fontSize: "16px",
               }}
             >
-              WhatsApp Español
+              📞 Llamar / WhatsApp Español (786-973-1521)
             </button>
           </a>
 
