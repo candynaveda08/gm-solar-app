@@ -318,7 +318,7 @@ function Home() {
                 fontSize: "16px",
               }}
             >
-              Call / WhatsApp English
+              📞 Call / WhatsApp English (346-971-2966)
             </button>
           </a>
         </form>
