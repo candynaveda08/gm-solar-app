@@ -12,11 +12,13 @@ function Dashboard() {
     try {
       const response = await fetch("https://gm-solar-app-1.onrender.com/api/leads");
       const data = await response.json();
+      data.sort((a, b) => a.name.localeCompare(b.name));
       setLeads(data);
-    } catch (error) {
-      console.log(error);
-    }
+      } catch (error) {
+  console.log(error);
+}
   };
+  
 
   const deleteLead = async (id) => {
     try {
