@@ -4,87 +4,151 @@ import Dashboard from "./Dashboard.jsx";
 
 function App() {
   const [page, setPage] = useState("home");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loginError, setLoginError] = useState("");
+  const [showLogin, setShowLogin] = useState(false);
 
-  const adminPassword = "solar123";
+  const [adminPassword, setAdminPassword] = useState("solar123");
+
+  const adminUser = "flfpartnersllc@gmail.com";
 
   const handleLogin = () => {
-    if (password === adminPassword) {
+    if (username.toLowerCase() === adminUser && password === adminPassword) {
       setLoggedIn(true);
+      setLoginError("");
+      setPassword("");
+      setShowLogin(false);
       setPage("admin");
     } else {
-      alert("Wrong Password");
+      setLoginError("Incorrect email or password.");
+      setPassword("");
     }
+  };
+
+  const handleChangePassword = () => {
+    const currentPassword = prompt("Current password:");
+    if (currentPassword !== adminPassword) {
+      alert("Incorrect current password.");
+      return;
+    }
+
+    const newPassword = prompt("New password:");
+    if (!newPassword) return;
+
+    setAdminPassword(newPassword);
+    alert("Password updated successfully.");
   };
 
   return (
     <div>
-      <div
-        style={{
-          padding: "15px",
-          textAlign: "center",
-          backgroundColor: "#0b2c6b",
-        }}
-      >
-        <button
-          onClick={() => setPage("home")}
-          style={{
-            padding: "10px 20px",
-            marginRight: "10px",
-            borderRadius: "8px",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
+      {showLogin && (
+        <div style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0,0,0,0.5)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 9999
+        }}>
+          <div style={{
+            backgroundColor: "white",
+            padding: "30px",
+            borderRadius: "15px",
+            width: "340px",
+            textAlign: "center",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.3)"
+          }}>
+            <h2>Admin Login</h2>
+
+            <input
+              type="email"
+              placeholder="Email"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              style={{
+                width: "90%",
+                padding: "12px",
+                marginBottom: "10px",
+                borderRadius: "8px",
+                border: "1px solid #ccc"
+              }}
+            />
+
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              style={{
+                width: "90%",
+                padding: "12px",
+                marginBottom: "10px",
+                borderRadius: "8px",
+                border: "1px solid #ccc"
+              }}
+            />
+
+            {loginError && (
+              <p style={{ color: "red", fontSize: "14px" }}>{loginError}</p>
+            )}
+
+            <button onClick={handleLogin}>Login</button>
+
+            <button
+              onClick={() => {
+                setShowLogin(false);
+                setPassword("");
+                setLoginError("");
+              }}
+              style={{ marginLeft: "10px" }}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div style={{
+        padding: "15px",
+        textAlign: "center",
+        backgroundColor: "#0b2c6b",
+      }}>
+        <button onClick={() => setPage("home")}>
           Home
         </button>
 
         {!loggedIn && (
-          <>
-            <input
-              type="password"
-              placeholder="Admin Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              style={{
-                padding: "10px",
-                borderRadius: "8px",
-                marginRight: "10px",
-                border: "none",
-              }}
-            />
-
-            <button
-              onClick={handleLogin}
-              style={{
-                padding: "10px 20px",
-                borderRadius: "8px",
-                border: "none",
-                backgroundColor: "#25D366",
-                color: "white",
-                cursor: "pointer",
-              }}
-            >
-              Login Admin
-            </button>
-          </>
+          <button onClick={() => setShowLogin(true)} style={{ marginLeft: "10px" }}>
+            Login Admin
+          </button>
         )}
 
         {loggedIn && (
-          <button
-            onClick={() => setPage("admin")}
-            style={{
-              padding: "10px 20px",
-              borderRadius: "8px",
-              border: "none",
-              backgroundColor: "#25D366",
-              color: "white",
-              cursor: "pointer",
-            }}
-          >
-            Admin Dashboard
-          </button>
+          <>
+            <button onClick={() => setPage("admin")} style={{ marginLeft: "10px" }}>
+              Admin Dashboard
+            </button>
+
+            <button onClick={handleChangePassword} style={{ marginLeft: "10px" }}>
+              Change Password
+            </button>
+
+            <button
+              onClick={() => {
+                setLoggedIn(false);
+                setPage("home");
+              }}
+              style={{ marginLeft: "10px" }}
+            >
+              Logout
+            </button>
+          </>
         )}
       </div>
 
