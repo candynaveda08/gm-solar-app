@@ -27,19 +27,40 @@ function App() {
     }
   };
 
-  const handleChangePassword = () => {
-    const currentPassword = prompt("Current password:");
-    if (currentPassword !== adminPassword) {
-      alert("Incorrect current password.");
-      return;
+  const handleChangePassword = async () => {
+  const currentPassword = prompt("Current password:");
+  if (!currentPassword) return;
+
+  const newPassword = prompt("New password:");
+  if (!newPassword) return;
+
+  try {
+    const response = await fetch(
+      "http://localhost:5050/api/admin/change-password",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: "flfpartnersllc@gmail.com",
+          currentPassword,
+          newPassword,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Password updated successfully.");
+    } else {
+      alert(data.message);
     }
-
-    const newPassword = prompt("New password:");
-    if (!newPassword) return;
-
-    setAdminPassword(newPassword);
-    alert("Password updated successfully.");
-  };
+  } catch (error) {
+    alert("Error connecting to server.");
+  }
+};
 
   return (
     <div>

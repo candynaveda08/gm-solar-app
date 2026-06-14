@@ -77,6 +77,29 @@ app.delete("/api/leads/:id", async (req, res) => {
     res.status(500).json({ message: "Error deleting client" });
   }
 });
+app.post("/api/admin/change-password", async (req, res) => {
+  try {
+    const { email, currentPassword, newPassword } = req.body;
+
+    const admin = await Admin.findOne({ email });
+
+    if (!admin) {
+      return res.status(404).json({ message: "Admin not found" });
+    }
+
+    if (admin.password !== currentPassword) {
+      return res.status(401).json({ message: "Current password is incorrect" });
+    }
+
+    admin.password = newPassword;
+    await admin.save();
+
+    res.json({ message: "Password updated successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error changing password" });
+  }
+});
 
 app.listen(5050, () => {
   console.log("Server running on port 5050");
