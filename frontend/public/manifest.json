@@ -1,0 +1,16 @@
+{
+  "name": "FLF Solar Services",
+  "short_name": "FLF Solar",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b2c6b",
+  "theme_color": "#0b2c6b",
+  "description": "Professional Solar Services",
+  "icons": [
+    {
+      "src": "/flf-logo.png.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ]
+}
