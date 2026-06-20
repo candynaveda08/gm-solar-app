@@ -81,15 +81,22 @@ function Home() {
       </div>
 
       {/* Hero */}
-      <div
-        style={{
-          backgroundColor: "#173b8f",
-          color: "white",
-          textAlign: "center",
-          padding: "70px 20px",
-        }}
-      >
-        <h1 style={{ fontSize: "42px" }}>
+<div
+  style={{
+    backgroundImage:
+      "linear-gradient(rgba(6,27,58,0.25), rgba(6,27,58,0.25)), url('https://images.unsplash.com/photo-1509391366360-2e959784a276')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    color: "white",
+    textAlign: "center",
+    padding: "120px 20px",
+  }}
+>
+
+      
+      
+      
+        <h1 style={{ fontSize: "56px", fontWeight: "bold", color: "white" }}>
           Professional Solar Services
         </h1>
 
@@ -132,7 +139,7 @@ function Home() {
               style={{
                 border:
                   formData.service === service
-                    ? "2px solid #25D366"
+                    ? "2px solid #facc15"
                     : "1px solid #ccc",
 
                 padding: "25px",
@@ -142,7 +149,7 @@ function Home() {
 
                 backgroundColor:
                   formData.service === service
-                    ? "#25D366"
+                    ? "#061b3a"
                     : "white",
 
                 color:
