@@ -174,17 +174,24 @@ function Home() {
           textAlign: "center",
         }}
       >
-        <h2>Request A Quote</h2>
+        <h2 style={{ fontSize: "32px", color: "#061b3a", marginBottom: "10px" }}>
+      Get Your Free Solar Quote Today
+</h2>
+<p style={{ color: "#555", marginBottom: "30px" }}>
+  Complete the form below and our solar experts will contact you shortly.
+</p>
 
         <form
           onSubmit={handleSubmit}
           style={{
             backgroundColor: "white",
             padding: "35px",
-            borderRadius: "20px",
-            maxWidth: "450px",
-            margin: "30px auto",
-            boxShadow: "0px 0px 15px rgba(0,0,0,0.1)",
+            maxWidth: "520px",
+margin: "30px auto",
+border: "1px solid #e5e7eb",
+boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
+            
+          
           }}
         >
           <input
@@ -267,16 +274,16 @@ function Home() {
           <button
             type="submit"
             style={{
-              backgroundColor: "#0b2c6b",
+              backgroundColor: "#f59e0b",
               color: "white",
-              padding: "12px 25px",
+              padding: "14px 35px",
               border: "none",
               borderRadius: "10px",
               cursor: "pointer",
               fontSize: "16px",
             }}
           >
-            Submit
+            Submit Request
           </button>
 
           <br />
@@ -331,7 +338,14 @@ function Home() {
         </form>
       </div>
     </div>
-  );
+    
+
+
+);
+  
+
+  
+
 }
 
 export default Home;
