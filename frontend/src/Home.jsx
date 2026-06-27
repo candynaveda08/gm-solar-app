@@ -96,9 +96,17 @@ function Home() {
       
       
       
-        <h1 style={{ fontSize: "56px", fontWeight: "bold", color: "white" }}>
-          Professional Solar Services
-        </h1>
+        <h1
+  style={{
+    fontSize: "clamp(26px, 6vw, 52px)",
+    fontWeight: "bold",
+    color: "white",
+    lineHeight: "1.25",
+padding: "0 15px",
+  }}
+>
+  Professional Solar Services
+</h1>
 
         <p style={{ fontSize: "22px" }}>
           More Energy • More Savings • Total Peace of Mind
