@@ -11,6 +11,7 @@ function Home() {
     time: "",
   });
   const [isSaving, setIsSaving] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -40,7 +41,7 @@ function Home() {
         body: JSON.stringify(formData),
       });
 
-      alert("Lead Saved Successfully!");
+      setSuccessMessage("Request sent successfully!");
 
       setFormData({
         firstName: "",
@@ -50,7 +51,9 @@ function Home() {
         date: "",
         time: "",
       });
+      setIsSaving(false);
     } catch (error) {
+      
       console.log(error);
       alert("Error saving lead");
     }
@@ -300,6 +303,18 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
           >
             {isSaving ? "Saving..." : "Get Free Quote"}
           </button>
+          {successMessage && (
+  <p
+    style={{
+      color: "#16a34a",
+      marginTop: "15px",
+      fontWeight: "bold",
+      textAlign: "center",
+    }}
+  >
+    ✅ {successMessage}
+  </p>
+)}
 
           <br />
           <br />
