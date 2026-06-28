@@ -204,6 +204,51 @@ padding: "0 15px",
         </div>
       </div>
 
+      {/* Why Choose Us */}
+<div
+  style={{
+    padding: "50px 20px",
+    backgroundColor: "#061b3a",
+    color: "white",
+    textAlign: "center",
+  }}
+>
+  <h2 style={{ fontSize: "32px", marginBottom: "30px", color: "white" }}>
+    Why Choose FLF Solar Services?
+  </h2>
+
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      gap: "20px",
+      flexWrap: "wrap",
+    }}
+  >
+    {[
+      "⭐ Trusted Solar Experts",
+      "⚡ Fast Response",
+      "🛡️ Licensed & Insured",
+      "✅ Satisfaction Guaranteed",
+    ].map((item) => (
+      <div
+        key={item}
+        style={{
+          backgroundColor: "white",
+          color: "#061b3a",
+          padding: "25px",
+          borderRadius: "18px",
+          width: "220px",
+          fontWeight: "bold",
+          boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+        }}
+      >
+        {item}
+      </div>
+    ))}
+  </div>
+</div>
+     
       {/* Form */}
       <div
         style={{
