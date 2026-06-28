@@ -1,4 +1,4 @@
-import logo from "./flf-logo.png.jpeg";
+import logo from "./flf-logo.png";
 import { useState } from "react";
 
 function Home() {
