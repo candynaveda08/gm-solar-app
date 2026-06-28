@@ -213,7 +213,7 @@ padding: "0 15px",
     textAlign: "center",
   }}
 >
-  <h2 style={{ fontSize: "32px", marginBottom: "30px", color: "white" }}>
+  <h2 style={{ fontSize: "32px", marginBottom: "30px" }}>
     Why Choose FLF Solar Services?
   </h2>
 
@@ -233,6 +233,7 @@ padding: "0 15px",
     ].map((item) => (
       <div
         key={item}
+        onClick={() => document.getElementById("quote-form")?.scrollIntoView({ behavior: "smooth" })}
         style={{
           backgroundColor: "white",
           color: "#061b3a",
@@ -249,8 +250,10 @@ padding: "0 15px",
   </div>
 </div>
      
-      {/* Form */}
-      <div
+      
+      
+      
+      <div id="quote-form"
         style={{
           backgroundColor: "#f5f5f5",
           padding: "60px 20px",
