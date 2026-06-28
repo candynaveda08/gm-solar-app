@@ -65,8 +65,8 @@ function Home() {
       {/* Navbar */}
       <div
         style={{
-          backgroundColor: "#0b2c6b",
-          padding: "15px 30px",
+          backgroundColor: "#061b3a",
+          padding: "20px 40px",
           display: "flex",
           alignItems: "center",
           gap: "15px",
@@ -156,10 +156,13 @@ padding: "0 15px",
                     ? "2px solid #facc15"
                     : "1px solid #ccc",
 
-                padding: "25px",
-                borderRadius: "15px",
+                padding: "30px",
+                borderRadius: "20px",
                 width: "250px",
                 cursor: "pointer",
+                boxShadow: "0 10px 25px rgba(0,0,0,0.12)",
+                transition: "all 0.3s ease",
+                textAlign: "center",
 
                 backgroundColor:
                   formData.service === service
@@ -174,7 +177,26 @@ padding: "0 15px",
                 fontWeight: "bold",
               }}
             >
-              {service}
+              <>
+  <div style={{ fontSize: "38px", marginBottom: "12px" }}>
+  {service === "Solar Panel Cleaning"
+    ? "🧽"
+    : service === "System Maintenance"
+    ? "🛠️"
+    : service === "Smart Monitoring"
+    ? "📱"
+    : service === "Complete Service Package"
+    ? "📦"
+    : service === "Before & After Photos"
+    ? "📸"
+    : service === "Basic System Report"
+    ? "📋"
+    : service === "Inverter Check"
+    ? "⚡"
+    : "🔌"}
+</div>
+  <div>{service}</div>
+</>
             </div>
           ))}
         </div>
