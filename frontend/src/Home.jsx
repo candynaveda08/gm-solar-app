@@ -10,6 +10,7 @@ function Home() {
     date: "",
     time: "",
   });
+  const [isSaving, setIsSaving] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -27,6 +28,8 @@ function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSaving) return;
+    setIsSaving(true);
 
     try {
       await fetch("https://gm-solar-app-1.onrender.com/api/leads", {
@@ -281,17 +284,21 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
 
           <button
             type="submit"
+            disabled={isSaving}
             style={{
               backgroundColor: "#f59e0b",
               color: "white",
-              padding: "14px 35px",
+              padding: "16px 45px",
               border: "none",
-              borderRadius: "10px",
+              borderRadius: "12px",
               cursor: "pointer",
-              fontSize: "16px",
+              fontSize: "18px",
+              fontWeight: "bold",
+              boxShadow: "0 6px 15px rgba(245,158,11,0.35)",
+              transition: "all 0.3s ease",
             }}
           >
-            Submit Request
+            {isSaving ? "Saving..." : "Get Free Quote"}
           </button>
 
           <br />
