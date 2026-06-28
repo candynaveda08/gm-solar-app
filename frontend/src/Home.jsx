@@ -158,7 +158,7 @@ padding: "0 15px",
 
                 padding: "30px",
                 borderRadius: "20px",
-                width: "250px",
+                width: "min(250px, 100%)",
                 cursor: "pointer",
                 boxShadow: "0 10px 25px rgba(0,0,0,0.12)",
                 transition: "all 0.3s ease",
