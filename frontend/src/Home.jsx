@@ -159,10 +159,10 @@ padding: "0 15px",
                     ? "2px solid #facc15"
                     : "1px solid #ccc",
 
-                padding: "30px",
+                padding: isMobile ? "18px" : "30px",
                 borderRadius: "20px",
-                width: "220px",
-                maxWidth: "250px",
+                width: isMobile ? "45%" : "220px",
+                maxWidth: isMobile ? "170px" : "250px",
                 minWidth: "120px",
                 cursor: "pointer",
                 boxShadow: "0 10px 25px rgba(0,0,0,0.12)",
