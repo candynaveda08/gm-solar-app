@@ -2,6 +2,7 @@ import logo from "./flf-logo.png";
 import { useState } from "react";
 
 function Home() {
+  const isMobile = window.innerWidth <= 768;
   const [formData, setFormData] = useState({
     firstName: "",
     phone: "",
@@ -135,6 +136,8 @@ padding: "0 15px",
             gap: "12px",
             flexWrap: "wrap",
             marginTop: "30px",
+            maxWidth: isMobile ? "380px" : "100%",
+            margin: "30px auto 0",
           }}
         >
           {[
@@ -158,7 +161,7 @@ padding: "0 15px",
 
                 padding: "30px",
                 borderRadius: "20px",
-                width: "calc(50% - 8px)",
+                width: "220px",
                 maxWidth: "250px",
                 minWidth: "120px",
                 cursor: "pointer",
@@ -204,51 +207,7 @@ padding: "0 15px",
         </div>
       </div>
 
-      {/* Why Choose Us */}
-<div
-  style={{
-    padding: "50px 20px",
-    backgroundColor: "#061b3a",
-    color: "white",
-    textAlign: "center",
-  }}
->
-  <h2 style={{ fontSize: "32px", marginBottom: "30px" }}>
-    Why Choose FLF Solar Services?
-  </h2>
-
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      gap: "20px",
-      flexWrap: "wrap",
-    }}
-  >
-    {[
-      "⭐ Trusted Solar Experts",
-      "⚡ Fast Response",
-      "🛡️ Licensed & Insured",
-      "✅ Satisfaction Guaranteed",
-    ].map((item) => (
-      <div
-        key={item}
-        onClick={() => document.getElementById("quote-form")?.scrollIntoView({ behavior: "smooth" })}
-        style={{
-          backgroundColor: "white",
-          color: "#061b3a",
-          padding: "25px",
-          borderRadius: "18px",
-          width: "220px",
-          fontWeight: "bold",
-          boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
-        }}
-      >
-        {item}
-      </div>
-    ))}
-  </div>
-</div>
+      
      
       
       
@@ -271,8 +230,8 @@ padding: "0 15px",
           onSubmit={handleSubmit}
           style={{
             backgroundColor: "white",
-            padding: "35px",
-            maxWidth: "520px",
+            padding: isMobile ? "22px" : "35px",
+            maxWidth: isMobile ? "92%" : "650px",
 margin: "30px auto",
 border: "1px solid #e5e7eb",
 boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
