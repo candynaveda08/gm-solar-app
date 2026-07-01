@@ -123,8 +123,10 @@ padding: "0 15px",
       {/* Services */}
       <div
         style={{
-          padding: "50px 20px",
+          padding: "60px 40px",
           textAlign: "center",
+          maxWidth: "1400px",
+          margin: "0 auto",
         }}
       >
         <h2>Choose Your Service</h2>
@@ -138,6 +140,7 @@ padding: "0 15px",
             justifyContent: "center",
             marginTop: "30px",
             justifyItems: "center",
+            placeContent: "center",
           }}
         >
           {[
