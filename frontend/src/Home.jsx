@@ -131,13 +131,13 @@ padding: "0 15px",
 
         <div
           style={{
-            display: "flex",
+            display: "grid",
+            gridTemplateColumns: isMobile ? "repeat(2, 150px)" : "repeat(3, 220px)",
+            rowGap: "24px",
+            columnGap: isMobile ? "16px" : "24px",
             justifyContent: "center",
-            gap: "12px",
-            flexWrap: "wrap",
             marginTop: "30px",
-            maxWidth: isMobile ? "380px" : "100%",
-            margin: "30px auto 0",
+            justifyItems: "center",
           }}
         >
           {[
@@ -159,10 +159,11 @@ padding: "0 15px",
                     ? "2px solid #facc15"
                     : "1px solid #ccc",
 
+                
                 padding: isMobile ? "18px" : "30px",
                 borderRadius: "20px",
-                width: isMobile ? "45%" : "220px",
-                maxWidth: isMobile ? "170px" : "250px",
+                width: "100%",
+                maxWidth: isMobile ? "140px" : "220px",
                 minWidth: "120px",
                 cursor: "pointer",
                 boxShadow: "0 10px 25px rgba(0,0,0,0.12)",
@@ -207,9 +208,7 @@ padding: "0 15px",
         </div>
       </div>
 
-      
-     
-      
+
       
       
       <div id="quote-form"
