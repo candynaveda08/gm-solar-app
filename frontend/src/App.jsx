@@ -135,17 +135,46 @@ function App() {
         </div>
       )}
 
-      <div style={{
-        padding: "15px",
-        textAlign: "center",
-        backgroundColor: "#0b2c6b",
-      }}>
-        <button onClick={() => setPage("home")}>
+      <div
+  style={{
+    minHeight: "72px",
+    padding: "0 45px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "12px",
+    background: "linear-gradient(90deg, #0b1f3a, #123d82)",
+    boxShadow: "0 4px 18px rgba(0,0,0,0.22)",
+  }}
+>
+        <button
+  onClick={() => setPage("home")}
+  style={{
+    background: "transparent",
+    color: "white",
+    border: "1px solid rgba(255,255,255,0.35)",
+    padding: "10px 18px",
+    borderRadius: "8px",
+    fontWeight: "600",
+    cursor: "pointer",
+  }}
+>
           Home
         </button>
 
         {!loggedIn && (
-          <button onClick={() => setShowLogin(true)} style={{ marginLeft: "10px" }}>
+          <button
+  onClick={() => setShowLogin(true)}
+  style={{
+    background: "#E8B200",
+    color: "white",
+    border: "none",
+    padding: "10px 18px",
+    borderRadius: "8px",
+    fontWeight: "700",
+    cursor: "pointer",
+  }}
+>
             Login Admin
           </button>
         )}

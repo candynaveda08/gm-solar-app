@@ -1,5 +1,7 @@
 import logo from "./flf-logo.png";
 import { useState } from "react";
+import Navbar from "./Navbar";
+
 
 function Home() {
   const isMobile = window.innerWidth <= 768;
@@ -63,29 +65,8 @@ function Home() {
   return (
     <div style={{ fontFamily: "Arial" }}>
       
-      {/* Navbar */}
-      <div
-        style={{
-          backgroundColor: "#061b3a",
-          padding: "20px 40px",
-          display: "flex",
-          alignItems: "center",
-          gap: "15px",
-        }}
-      >
-        <img
-          src={logo}
-          alt="Logo"
-          style={{
-            width: "70px",
-            borderRadius: "10px",
-          }}
-        />
-
-        <h2 style={{ color: "white" }}>
-          FLF Solar Services
-        </h2>
-      </div>
+      <Navbar />
+      
 
       {/* Hero */}
 <div
@@ -134,7 +115,7 @@ padding: "0 15px",
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: isMobile ? "repeat(2, 145px)" : "repeat(3, 220px)",
+            gridTemplateColumns: isMobile ? "repeat(2, 160px)" : "repeat(3, 260px)",
             rowGap: "24px",
             columnGap: isMobile ? "22px" : "24px",
             justifyContent: "center",
@@ -233,14 +214,17 @@ padding: "0 15px",
           style={{
             backgroundColor: "white",
             padding: isMobile ? "22px" : "35px",
-            maxWidth: isMobile ? "92%" : "650px",
-margin: "30px auto",
+            maxWidth: isMobile ? "92%" : "850px",
+margin: "40px auto",
 border: "1px solid #e5e7eb",
 boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
             
           
           }}
         >
+          
+  
+
           <input
             type="text"
             name="firstName"
@@ -334,7 +318,7 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
               transition: "all 0.3s ease",
             }}
           >
-            {isSaving ? "Saving..." : "Get Free Quote"}
+            {isSaving ? "Sending Request..." : "Request a Free Quote"}
           </button>
           {successMessage && (
   <p
