@@ -5,45 +5,56 @@ function Navbar() {
     <nav
       style={{
         backgroundColor: "#0b1f3a",
-        height: "80px",
+        minHeight: "95px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "0 50px",
-        position: "sticky",
-        top: 0,
-        zIndex: 1000,
+        padding: "10px 50px",
         boxShadow: "0 3px 10px rgba(0,0,0,0.2)",
       }}
     >
-      {/* Logo */}
+      {/* Logo y nombre */}
       <div
         style={{
-  width: "65px",
-  height: "65px",
-  objectFit: "contain",
-  borderRadius: "10px",
-}}
+          display: "flex",
+          alignItems: "center",
+          gap: "18px",
+        }}
       >
         <img
           src={flfLogo}
           alt="FLF Solar"
           style={{
-            width: "95px",
-            height: "95px",
-            borderRadius: "8px",
+            width: "75px",
+            height: "75px",
+            objectFit: "contain",
+            borderRadius: "10px",
+            display: "block",
           }}
         />
 
-        <h2
-          style={{
-            color: "white",
-            margin: 0,
-            fontSize: "28px",
-          }}
-        >
-          FLF Solar Services
-        </h2>
+        <div>
+          <h2
+            style={{
+              color: "white",
+              margin: 0,
+              fontSize: "28px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            FLF Solar Services
+          </h2>
+
+          <p
+            style={{
+              color: "rgba(255,255,255,0.8)",
+              margin: "4px 0 0",
+              fontSize: "14px",
+            }}
+          >
+            More Energy. More Savings. Total Peace of Mind.
+          </p>
+        </div>
       </div>
 
       {/* Menú */}
@@ -54,9 +65,6 @@ function Navbar() {
           gap: "30px",
         }}
       >
-        
-
-        
       </div>
     </nav>
   );

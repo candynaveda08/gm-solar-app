@@ -100,6 +100,7 @@ function Dashboard() {
         >
           <p><strong>Name:</strong> {lead.firstName}</p>
           <p><strong>Phone:</strong> {lead.phone}</p>
+          <p><strong>Email:</strong> {lead.email}</p>
           <p><strong>Address:</strong> {lead.address}</p>
           <p><strong>Service:</strong> {lead.service}</p>
           <p><strong>Date:</strong> {lead.date}</p>

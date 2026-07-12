@@ -8,6 +8,7 @@ function Home() {
   const [formData, setFormData] = useState({
     firstName: "",
     phone: "",
+    email: "",
     address: "",
     service: "",
     date: "",
@@ -36,7 +37,7 @@ function Home() {
     setIsSaving(true);
 
     try {
-      await fetch("https://gm-solar-app-1.onrender.com/api/leads", {
+      await fetch("http://localhost:5050/api/leads", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,6 +50,7 @@ function Home() {
       setFormData({
         firstName: "",
         phone: "",
+        email: "",
         address: "",
         service: "",
         date: "",
@@ -104,13 +106,51 @@ padding: "0 15px",
       {/* Services */}
       <div
         style={{
-          padding: "60px 40px",
-          textAlign: "center",
-          maxWidth: "1400px",
-          margin: "0 auto",
-        }}
+  padding: "70px 60px",
+  textAlign: "center",
+  maxWidth: "1200px",
+  margin: "60px auto",
+  backgroundColor: "#ffffff",
+  border: "1px solid #e5e7eb",
+  borderRadius: "30px",
+  boxShadow: "0 15px 40px rgba(0,0,0,0.08)",
+}}
       >
-        <h2>Choose Your Service</h2>
+        <div style={{ marginBottom: "35px" }}>
+  <p
+    style={{
+      color: "#e8b200",
+      fontWeight: "bold",
+      marginBottom: "8px",
+      textTransform: "uppercase",
+      letterSpacing: "1.5px",
+      fontSize: "14px",
+    }}
+  >
+    OUR SERVICES
+  </p>
+
+  <h2
+    style={{
+      fontSize: isMobile ? "28px" : "36px",
+      color: "#0b1f3a",
+      margin: 0,
+    }}
+  >
+    Choose the Right Solar Service
+  </h2>
+
+  <p
+    style={{
+      color: "#666",
+      maxWidth: "600px",
+      margin: "12px auto 0",
+      lineHeight: "1.6",
+    }}
+  >
+    Professional maintenance and support designed to keep your solar system working efficiently.
+  </p>
+</div>
 
         <div
           style={{
@@ -118,6 +158,8 @@ padding: "0 15px",
             gridTemplateColumns: isMobile ? "repeat(2, 160px)" : "repeat(3, 260px)",
             rowGap: "24px",
             columnGap: isMobile ? "22px" : "24px",
+            justifyContent: "center",
+            justifyItems: "center",
             justifyContent: "center",
             marginTop: "30px",
             justifyItems: "center",
@@ -133,6 +175,7 @@ padding: "0 15px",
             "Basic System Report",
             "Inverter Check",
             "Cable & Connection Review",
+            "Free Estimate",
           ].map((service) => (
             <div
               key={service}
@@ -182,8 +225,12 @@ padding: "0 15px",
     : service === "Basic System Report"
     ? "📋"
     : service === "Inverter Check"
-    ? "⚡"
-    : "🔌"}
+? "⚡"
+: service === "Cable & Connection Review"
+? "🔌"
+: service === "Free Estimate"
+? "💲"
+: "☀️"}
 </div>
   <div>{service}</div>
 </>
@@ -214,7 +261,7 @@ padding: "0 15px",
           style={{
             backgroundColor: "white",
             padding: isMobile ? "22px" : "35px",
-            maxWidth: isMobile ? "92%" : "850px",
+            maxWidth: isMobile ? "95%" : "950px",
 margin: "40px auto",
 border: "1px solid #e5e7eb",
 boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
@@ -250,6 +297,18 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
               marginBottom: "15px",
             }}
           />
+          <input
+  type="email"
+  name="email"
+  placeholder="Email Address"
+  value={formData.email}
+  onChange={handleChange}
+  style={{
+    width: "90%",
+    padding: "12px",
+    marginBottom: "15px",
+  }}
+/>
 
           <input
             type="text"
@@ -308,7 +367,9 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
             style={{
               backgroundColor: "#f59e0b",
               color: "white",
-              padding: "16px 45px",
+              padding: "18px 55px",
+              minWidth: "280px",
+              minHeight: "55px",
               border: "none",
               borderRadius: "12px",
               cursor: "pointer",
