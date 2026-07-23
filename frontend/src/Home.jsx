@@ -396,131 +396,203 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
           <br />
           <br />
 
-          <a
-            href="https://wa.me/17869731521"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button
-              type="button"
-              style={{
-                backgroundColor: "#25D366",
-                color: "white",
-                padding: "12px 25px",
-                border: "none",
-                borderRadius: "10px",
-                cursor: "pointer",
-                width: "90%",
-                fontSize: "16px",
-              }}
-            >
-              📞 Llamar / WhatsApp Español (786-973-1521)
-            </button>
-          </a>
+          
+          <h2
+  style={{
+    textAlign: "center",
+    color: "#1d4ed8",
+    marginTop: "30px",
+    marginBottom: "8px",
+    fontSize: "28px",
+    fontWeight: "700",
+  }}
+>
+  Need Help? Contact Our Team
+</h2>
 
+<p
+  style={{
+    textAlign: "center",
+    color: "#555",
+    marginBottom: "25px",
+    fontSize: "16px",
+  }}
+>
+  Our team is ready to assist you. Choose your preferred language and contact us by phone or WhatsApp.
+</p>
           <br />
           <br />
 
           <div
   style={{
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-    gap: "14px",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+    gap: "18px",
     width: "90%",
-    margin: "25px auto 0",
+    margin: "28px auto 0",
   }}
 >
-  <a
-    href="tel:+17869731521"
-    style={{ textDecoration: "none" }}
+  {/* Spanish Contact */}
+  <div
+    style={{
+      backgroundColor: "#f8fafc",
+      border: "1px solid #e2e8f0",
+      borderRadius: "14px",
+      padding: "18px",
+      boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
+      textAlign: "center",
+    }}
   >
-    <button
-      type="button"
+    <h3
       style={{
-        backgroundColor: "#16a34a",
-        color: "white",
-        padding: "14px 18px",
-        border: "none",
-        borderRadius: "10px",
-        cursor: "pointer",
-        width: "100%",
-        fontSize: "16px",
-        fontWeight: "700",
+        margin: "0 0 6px",
+        color: "#0f172a",
+        fontSize: "19px",
       }}
     >
-      📞 Call Spanish
-    </button>
-  </a>
+      📞 Atención en Español
+    </h3>
 
-  <a
-    href="https://wa.me/17869731521"
-    target="_blank"
-    rel="noreferrer"
-    style={{ textDecoration: "none" }}
-  >
-    <button
-      type="button"
+    <p
       style={{
-        backgroundColor: "#25D366",
-        color: "white",
-        padding: "14px 18px",
-        border: "none",
-        borderRadius: "10px",
-        cursor: "pointer",
-        width: "100%",
-        fontSize: "16px",
-        fontWeight: "700",
+        margin: "0 0 15px",
+        color: "#475569",
+        fontWeight: "600",
       }}
     >
-      💬 WhatsApp Spanish
-    </button>
-  </a>
+      786-973-1521
+    </p>
 
-  <a
-    href="tel:+13469712966"
-    style={{ textDecoration: "none" }}
-  >
-    <button
-      type="button"
+    <div
       style={{
-        backgroundColor: "#1d4ed8",
-        color: "white",
-        padding: "14px 18px",
-        border: "none",
-        borderRadius: "10px",
-        cursor: "pointer",
-        width: "100%",
-        fontSize: "16px",
-        fontWeight: "700",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "10px",
       }}
     >
-      📞 Call English
-    </button>
-  </a>
+      <a href="tel:+17869731521" style={{ textDecoration: "none" }}>
+        <button
+          type="button"
+          style={{
+            width: "100%",
+            padding: "13px",
+            backgroundColor: "#16a34a",
+            color: "white",
+            border: "none",
+            borderRadius: "9px",
+            fontWeight: "700",
+            cursor: "pointer",
+          }}
+        >
+          📞 Llamar
+        </button>
+      </a>
 
-  <a
-    href="https://wa.me/13469712966"
-    target="_blank"
-    rel="noreferrer"
-    style={{ textDecoration: "none" }}
+      <a
+        href="https://wa.me/17869731521"
+        target="_blank"
+        rel="noreferrer"
+        style={{ textDecoration: "none" }}
+      >
+        <button
+          type="button"
+          style={{
+            width: "100%",
+            padding: "13px",
+            backgroundColor: "#22c55e",
+            color: "white",
+            border: "none",
+            borderRadius: "9px",
+            fontWeight: "700",
+            cursor: "pointer",
+          }}
+        >
+          💬 WhatsApp
+        </button>
+      </a>
+    </div>
+  </div>
+
+  {/* English Contact */}
+  <div
+    style={{
+      backgroundColor: "#f8fafc",
+      border: "1px solid #e2e8f0",
+      borderRadius: "14px",
+      padding: "18px",
+      boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
+      textAlign: "center",
+    }}
   >
-    <button
-      type="button"
+    <h3
       style={{
-        backgroundColor: "#2563eb",
-        color: "white",
-        padding: "14px 18px",
-        border: "none",
-        borderRadius: "10px",
-        cursor: "pointer",
-        width: "100%",
-        fontSize: "16px",
-        fontWeight: "700",
+        margin: "0 0 6px",
+        color: "#0f172a",
+        fontSize: "19px",
       }}
     >
-      💬 WhatsApp English
-    </button>
-  </a>
+      📞 English Support
+    </h3>
+
+    <p
+      style={{
+        margin: "0 0 15px",
+        color: "#475569",
+        fontWeight: "600",
+      }}
+    >
+      346-971-2966
+    </p>
+
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "10px",
+      }}
+    >
+      <a href="tel:+13469712966" style={{ textDecoration: "none" }}>
+        <button
+          type="button"
+          style={{
+            width: "100%",
+            padding: "13px",
+            backgroundColor: "#2563eb",
+            color: "white",
+            border: "none",
+            borderRadius: "9px",
+            fontWeight: "700",
+            cursor: "pointer",
+          }}
+        >
+          📞 Call
+        </button>
+      </a>
+
+      <a
+        href="https://wa.me/13469712966"
+        target="_blank"
+        rel="noreferrer"
+        style={{ textDecoration: "none" }}
+      >
+        <button
+          type="button"
+          style={{
+            width: "100%",
+            padding: "13px",
+            backgroundColor: "#2563eb",
+            color: "white",
+            border: "none",
+            borderRadius: "9px",
+            fontWeight: "700",
+            cursor: "pointer",
+          }}
+        >
+          💬 WhatsApp
+        </button>
+      </a>
+    </div>
+  </div>
 </div>
           
         </form>
