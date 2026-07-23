@@ -8,7 +8,9 @@ function App() {
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState("");
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(
+  window.location.pathname === "/admin"
+);
 
   const [adminPassword, setAdminPassword] = useState("solar123");
 
@@ -162,7 +164,7 @@ function App() {
           Home
         </button>
 
-        {!loggedIn && (
+        {false && !loggedIn && (
           <button
   onClick={() => setShowLogin(true)}
   style={{
@@ -175,9 +177,11 @@ function App() {
     cursor: "pointer",
   }}
 >
-            Login Admin
+            Admin Login
           </button>
         )}
+        
+
 
         {loggedIn && (
           <>
