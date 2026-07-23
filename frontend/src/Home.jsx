@@ -37,13 +37,14 @@ function Home() {
     setIsSaving(true);
 
     try {
-      await fetch("https://gm-solar-app-1.onrender.com/api/leads", {
+      const response = await fetch("https://gm-solar-app-1.onrender.com/api/leads", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
+      console.log("Status:", response.status);
 
       setSuccessMessage("Request sent successfully!");
 
@@ -420,27 +421,108 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
           <br />
           <br />
 
-          <a
-            href="https://wa.me/13469712966"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <button
-              type="button"
-              style={{
-                backgroundColor: "#173b8f",
-                color: "white",
-                padding: "12px 25px",
-                border: "none",
-                borderRadius: "10px",
-                cursor: "pointer",
-                width: "90%",
-                fontSize: "16px",
-              }}
-            >
-              📞 Call / WhatsApp English (346-971-2966)
-            </button>
-          </a>
+          <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+    gap: "14px",
+    width: "90%",
+    margin: "25px auto 0",
+  }}
+>
+  <a
+    href="tel:+17869731521"
+    style={{ textDecoration: "none" }}
+  >
+    <button
+      type="button"
+      style={{
+        backgroundColor: "#16a34a",
+        color: "white",
+        padding: "14px 18px",
+        border: "none",
+        borderRadius: "10px",
+        cursor: "pointer",
+        width: "100%",
+        fontSize: "16px",
+        fontWeight: "700",
+      }}
+    >
+      📞 Call Spanish
+    </button>
+  </a>
+
+  <a
+    href="https://wa.me/17869731521"
+    target="_blank"
+    rel="noreferrer"
+    style={{ textDecoration: "none" }}
+  >
+    <button
+      type="button"
+      style={{
+        backgroundColor: "#25D366",
+        color: "white",
+        padding: "14px 18px",
+        border: "none",
+        borderRadius: "10px",
+        cursor: "pointer",
+        width: "100%",
+        fontSize: "16px",
+        fontWeight: "700",
+      }}
+    >
+      💬 WhatsApp Spanish
+    </button>
+  </a>
+
+  <a
+    href="tel:+13469712966"
+    style={{ textDecoration: "none" }}
+  >
+    <button
+      type="button"
+      style={{
+        backgroundColor: "#1d4ed8",
+        color: "white",
+        padding: "14px 18px",
+        border: "none",
+        borderRadius: "10px",
+        cursor: "pointer",
+        width: "100%",
+        fontSize: "16px",
+        fontWeight: "700",
+      }}
+    >
+      📞 Call English
+    </button>
+  </a>
+
+  <a
+    href="https://wa.me/13469712966"
+    target="_blank"
+    rel="noreferrer"
+    style={{ textDecoration: "none" }}
+  >
+    <button
+      type="button"
+      style={{
+        backgroundColor: "#2563eb",
+        color: "white",
+        padding: "14px 18px",
+        border: "none",
+        borderRadius: "10px",
+        cursor: "pointer",
+        width: "100%",
+        fontSize: "16px",
+        fontWeight: "700",
+      }}
+    >
+      💬 WhatsApp English
+    </button>
+  </a>
+</div>
+          
         </form>
       </div>
     </div>

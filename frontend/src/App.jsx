@@ -148,7 +148,8 @@ function App() {
     background: "linear-gradient(90deg, #0b1f3a, #123d82)",
     boxShadow: "0 4px 18px rgba(0,0,0,0.22)",
   }}
->
+> 
+      {window.location.pathname !== "/" && (
         <button
   onClick={() => setPage("home")}
   style={{
@@ -163,6 +164,7 @@ function App() {
 >
           Home
         </button>
+        )}
 
         {false && !loggedIn && (
           <button
