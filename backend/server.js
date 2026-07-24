@@ -2,13 +2,14 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 import Lead from "./models/Lead.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import Admin from "./models/Admin.js";
 
 dotenv.config();
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const app = express();
 
@@ -58,24 +59,12 @@ app.post("/api/leads", async (req, res) => {
     await newLead.save();
 
     try {
-      const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        requireTLS: true,
-        auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-      connectionTimeout: 20000,
-      greetingTimeout: 20000,
-      socketTimeout: 30000,
-      });
+      
 
-      await transporter.sendMail({
-        from: `"FLF Solar Website" <${process.env.EMAIL_USER}>`,
+      await resend.emails.send({
+        from: "FLF Solar Website <onboarding@resend.dev>",
         to: "flfpartnersllc@gmail.com",
-        replyTo: req.body.email || process.env.EMAIL_USER,
+        replyTo: req.body.email,
         subject: "New Solar Service Request",
         html: `
           <div style="font-family: Arial, sans-serif; line-height: 1.6;">
