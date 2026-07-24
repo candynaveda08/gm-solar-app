@@ -25,12 +25,15 @@ function Navbar() {
           src={flfLogo}
           alt="FLF Solar"
           style={{
-            width: "75px",
-            height: "75px",
-            objectFit: "contain",
-            borderRadius: "10px",
-            display: "block",
-          }}
+          width: "85px",
+          height: "85px",
+          objectFit: "contain",
+          backgroundColor: "#ffffff",
+          borderRadius: "12px",
+          padding: "6px",
+          boxShadow: "0 6px 18px rgba(0,0,0,0.20)",
+          display: "block",
+    }}
         />
 
         <div>
@@ -38,7 +41,9 @@ function Navbar() {
             style={{
               color: "white",
               margin: 0,
-              fontSize: "28px",
+              fontSize: "34px",
+              fontWeight: "700",
+              letterSpacing: "0.5px",
               whiteSpace: "nowrap",
             }}
           >

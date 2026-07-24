@@ -340,6 +340,7 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
             type="date"
             name="date"
             value={formData.date}
+            min={new Date().toISOString().split("T")[0]}
             onChange={handleChange}
             style={{
               width: "90%",
