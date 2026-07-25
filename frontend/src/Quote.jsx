@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 function Quote() {
   const [form, setForm] = useState({
@@ -28,6 +29,19 @@ function Quote() {
       });
 
       if (response.ok) {
+        await emailjs.send(
+  "service_7m75les",
+  "template_5rqs1c4",
+  {
+    name: form.name,
+    phone: form.phone,
+    address: form.address,
+    service: form.service,
+    date: form.date,
+    time: form.time,
+  },
+  "XNMR2eBm4yK-tik1v"
+);
         alert("Quote request saved successfully!");
         setForm({
           name: "",

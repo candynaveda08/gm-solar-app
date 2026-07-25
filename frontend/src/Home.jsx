@@ -1,6 +1,7 @@
 import logo from "./flf-logo.png";
 import { useState } from "react";
 import Navbar from "./Navbar";
+import emailjs from "@emailjs/browser";
 
 
 function Home() {
@@ -45,6 +46,24 @@ function Home() {
         body: JSON.stringify(formData),
       });
       console.log("Status:", response.status);
+      console.log("Status:", response.status);
+
+await emailjs.send(
+  "service_7m75les",
+  "template_5rqs1c4",
+  {
+    name: formData.firstName,
+    phone: formData.phone,
+    email: formData.email,
+    address: formData.address,
+    service: formData.service,
+    date: formData.date,
+    time: formData.time,
+  },
+  "XNMR2eBm4yK-tik1v"
+);
+
+setSuccessMessage("Request sent successfully!");
 
       setSuccessMessage("Request sent successfully!");
 
