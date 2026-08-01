@@ -8,6 +8,10 @@ const leadSchema = new mongoose.Schema({
   service: String,
   date: String,
   time: String,
+  status: {
+  type: String,
+  default: "New",
+},
 });
 
 const Lead = mongoose.model("Lead", leadSchema);
