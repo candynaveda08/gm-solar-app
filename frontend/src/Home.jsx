@@ -63,9 +63,9 @@ await emailjs.send(
   "XNMR2eBm4yK-tik1v"
 );
 
-setSuccessMessage("Request sent successfully!");
+setSuccessMessage("Thank you for contacting FLF Solar Services. We will contact you as soon as possible.");
 
-      setSuccessMessage("Request sent successfully!");
+      
 
       setFormData({
         firstName: "",
@@ -76,7 +76,6 @@ setSuccessMessage("Request sent successfully!");
         date: "",
         time: "",
       });
-      setIsSaving(false);
     } catch (error) {
       
       console.log(error);
