@@ -397,7 +397,7 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
               transition: "all 0.3s ease",
             }}
           >
-            {isSaving ? "Sending Request..." : "Request a Free Quote"}
+            {isSaving ? "Sending your request..." : "Request a Free Quote"}
           </button>
           {successMessage && (
   <p
