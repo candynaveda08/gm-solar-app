@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import * as XLSX from "xlsx";
 
 const API_URL = "https://gm-solar-app-1.onrender.com/api/leads";
-const REVIEWS_API_URL = "https://gm-solar-app-1.onrender.com/api/reviews/all";
+const REVIEWS_API_URL =
+  "https://gm-solar-app-1.onrender.com/api/reviews";
 
 function Dashboard() {
   const [leads, setLeads] = useState([]);
@@ -44,7 +45,7 @@ function Dashboard() {
   };
   const getReviews = async () => {
   try {
-    const response = await fetch(REVIEWS_API_URL);
+    const response = await fetch(`${REVIEWS_API_URL}/all`);
 
     if (!response.ok) {
       throw new Error("Could not load reviews.");
