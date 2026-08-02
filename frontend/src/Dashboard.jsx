@@ -2,15 +2,18 @@ import { useEffect, useMemo, useState } from "react";
 import * as XLSX from "xlsx";
 
 const API_URL = "https://gm-solar-app-1.onrender.com/api/leads";
+const REVIEWS_API_URL = "https://gm-solar-app-1.onrender.com/api/reviews/all";
 
 function Dashboard() {
   const [leads, setLeads] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState("");
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     getLeads();
+    getReviews();
   }, []);
 
   const getLeads = async () => {
@@ -39,6 +42,60 @@ function Dashboard() {
       setLoading(false);
     }
   };
+  const getReviews = async () => {
+  try {
+    const response = await fetch(REVIEWS_API_URL);
+
+    if (!response.ok) {
+      throw new Error("Could not load reviews.");
+    }
+
+    const data = await response.json();
+    setReviews(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+const approveReview = async (reviewId) => {
+  try {
+    const response = await fetch(
+      `${REVIEWS_API_URL}/${reviewId}/approve`,
+      {
+        method: "PATCH",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Could not approve review.");
+    }
+
+    await getReviews();
+    alert("Review approved successfully.");
+  } catch (error) {
+    console.error(error);
+    alert("Could not approve review.");
+  }
+};
+  const deleteReview = async (reviewId) => {
+  try {
+    const response = await fetch(
+      `${REVIEWS_API_URL.replace("/all", "")}/${reviewId}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Could not delete review.");
+    }
+
+    await getReviews();
+    alert("Review deleted successfully.");
+  } catch (error) {
+    console.error(error);
+    alert("Could not delete review.");
+  }
+};
 
   const filteredLeads = useMemo(() => {
     const value = search.toLowerCase().trim();
@@ -430,6 +487,70 @@ function Dashboard() {
           </section>
         )}
       </div>
+      <section
+  style={{
+    marginTop: "40px",
+    backgroundColor: "white",
+    padding: "24px",
+    borderRadius: "16px",
+  }}
+>
+  <h2>Customer Reviews</h2>
+
+  {reviews.length === 0 ? (
+    <p>No reviews found.</p>
+  ) : (
+    reviews.map((review) => (
+      <div
+        key={review._id}
+        style={{
+          border: "1px solid #ddd",
+          borderRadius: "10px",
+          padding: "15px",
+          marginBottom: "15px",
+        }}
+      >
+        <h3>{review.name}</h3>
+        <p>Rating: {review.rating} ⭐</p>
+        <p>{review.comment}</p>
+        <p>Status: {review.approved ? "Approved" : "Pending"}</p>
+
+        {!review.approved && (
+          <button
+            onClick={() => approveReview(review._id)}
+            style={{
+              backgroundColor: "#16a34a",
+              color: "white",
+              border: "none",
+              padding: "10px 18px",
+              borderRadius: "8px",
+              cursor: "pointer",
+            }}
+          >
+            Approve
+          </button>
+          
+          
+        )}
+        <button
+  onClick={() => deleteReview(review._id)}
+  style={{
+    backgroundColor: "#dc2626",
+    color: "white",
+    border: "none",
+    padding: "10px 18px",
+    borderRadius: "8px",
+    cursor: "pointer",
+    marginLeft: "10px",
+  }}
+>
+  Delete
+</button>
+      </div>
+    ))
+    
+  )}
+</section>
     </main>
   );
 }

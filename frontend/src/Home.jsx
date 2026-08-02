@@ -2,6 +2,7 @@ import logo from "./flf-logo.png";
 import { useState } from "react";
 import Navbar from "./Navbar";
 import emailjs from "@emailjs/browser";
+import ReviewForm from "./ReviewForm";
 
 
 function Home() {
@@ -17,6 +18,13 @@ function Home() {
   });
   const [isSaving, setIsSaving] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [reviewForm, setReviewForm] = useState({
+  name: "",
+  rating: 5,
+  comment: "",
+});
+
+const [reviewMessage, setReviewMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -269,6 +277,7 @@ padding: "0 15px",
         <h2 style={{ fontSize: "32px", color: "#061b3a", marginBottom: "10px" }}>
       Get Your Free Solar Quote Today
 </h2>
+
 <p style={{ color: "#555", marginBottom: "30px" }}>
   Complete the form below and our solar experts will contact you shortly.
 </p>
@@ -411,12 +420,18 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
     ✅ {successMessage}
   </p>
 )}
+</form>
+
+<ReviewForm />
+
+
 
           <br />
           <br />
 
           
           <h2
+          
   style={{
     textAlign: "center",
     color: "#1d4ed8",
@@ -426,7 +441,9 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
     fontWeight: "700",
   }}
 >
+  
   Need Help? Contact Our Team
+  
 </h2>
 
 <p
@@ -443,6 +460,7 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
           <br />
 
           <div
+          
   style={{
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
@@ -614,7 +632,9 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
   </div>
 </div>
           
-        </form>
+      
+        
+        
       </div>
     </div>
     

@@ -6,6 +6,7 @@ import { Resend } from "resend";
 
 import Lead from "./models/Lead.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
 import Admin from "./models/Admin.js";
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/admin", adminRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 app.post("/api/admin/login", async (req, res) => {
   try {
