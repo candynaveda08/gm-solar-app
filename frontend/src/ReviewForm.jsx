@@ -19,7 +19,7 @@ export default function ReviewForm() {
       setIsSending(true);
       setMessage("");
 
-      const response = await fetch("http://localhost:5050/api/reviews", {
+      const response = await fetch("https://gm-solar-app-1.onrender.com/api/reviews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
