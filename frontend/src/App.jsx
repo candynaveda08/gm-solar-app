@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Home from "./Home.jsx";
 import Dashboard from "./Dashboard.jsx";
+import AllReviews from "./AllReviews.jsx";
 
 function App() {
   const [page, setPage] = useState("home");
@@ -208,8 +209,9 @@ function App() {
         )}
       </div>
 
-      {page === "home" && <Home />}
+      {page === "home" && <Home setPage={setPage} />}
       {page === "admin" && loggedIn && <Dashboard />}
+      {page === "reviews" && <AllReviews />}
     </div>
   );
 }

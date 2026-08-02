@@ -5,7 +5,7 @@ import emailjs from "@emailjs/browser";
 import ReviewForm from "./ReviewForm";
 
 
-function Home() {
+function Home({ setPage }) {
   const isMobile = window.innerWidth <= 768;
   const [formData, setFormData] = useState({
     firstName: "",
@@ -26,6 +26,7 @@ function Home() {
 
 const [reviewMessage, setReviewMessage] = useState("");
 const [approvedReviews, setApprovedReviews] = useState([]);
+const [selectedReview, setSelectedReview] = useState(null);
 
 useEffect(() => {
   const loadApprovedReviews = async () => {
@@ -446,22 +447,15 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
 
 <ReviewForm />
 <div style={{ marginTop: "40px" }}>
-  <h2
-    style={{
-      textAlign: "center",
-      color: "#1d4ed8",
-      marginBottom: "20px",
-    }}
-  >
-    What Our Customers Say
-  </h2>
+ 
+    
 
   {approvedReviews.length === 0 ? (
     <p style={{ textAlign: "center" }}>
       No reviews yet.
     </p>
   ) : (
-    approvedReviews.map((review) => (
+    approvedReviews.slice(0, 3).map((review) => (
       <div
         key={review._id}
         style={{
@@ -472,12 +466,40 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
           boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
         }}
       >
-        <h3>{review.name}</h3>
-        <p>{"⭐".repeat(review.rating)}</p>
-        <p>{review.comment}</p>
+        
+
+
+
+
       </div>
     ))
   )}
+</div>
+
+<div
+  style={{
+    textAlign: "center",
+    marginTop: "25px",
+    marginBottom: "30px",
+  }}
+>
+  <button
+  onClick={() => setPage("reviews")}
+    style={{
+      background: "#1d4ed8",
+      color: "#fff",
+      border: "none",
+      padding: "12px 24px",
+      borderRadius: "8px",
+      fontSize: "16px",
+      fontWeight: "600",
+      cursor: "pointer",
+    }}
+  >
+    
+    Read Customer Reviews
+  </button>
+  
 </div>
 
 
@@ -692,6 +714,68 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
         
         
       </div>
+      {selectedReview && (
+  <div
+    onClick={() => setSelectedReview(null)}
+    style={{
+      position: "fixed",
+      inset: 0,
+      backgroundColor: "rgba(15, 23, 42, 0.65)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 9999,
+      padding: "20px",
+    }}
+  >
+    <div
+      onClick={(e) => e.stopPropagation()}
+      style={{
+        backgroundColor: "#ffffff",
+        width: "100%",
+        maxWidth: "480px",
+        borderRadius: "18px",
+        padding: "30px",
+        boxShadow: "0 24px 60px rgba(0, 0, 0, 0.3)",
+        textAlign: "center",
+      }}
+    >
+      <h2 style={{ marginBottom: "10px", color: "#0f172a" }}>
+        {selectedReview.name}
+      </h2>
+
+      <p style={{ fontSize: "22px", marginBottom: "18px" }}>
+        {"⭐".repeat(selectedReview.rating)}
+      </p>
+
+      <p
+        style={{
+          color: "#334155",
+          fontSize: "17px",
+          lineHeight: "1.7",
+          marginBottom: "24px",
+        }}
+      >
+        “{selectedReview.comment}”
+      </p>
+
+      <button
+        onClick={() => setSelectedReview(null)}
+        style={{
+          backgroundColor: "#1d4ed8",
+          color: "#ffffff",
+          border: "none",
+          padding: "11px 22px",
+          borderRadius: "9px",
+          cursor: "pointer",
+          fontWeight: "700",
+        }}
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
     </div>
     
 
