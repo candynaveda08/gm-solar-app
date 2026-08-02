@@ -1,5 +1,5 @@
 import logo from "./flf-logo.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import emailjs from "@emailjs/browser";
 import ReviewForm from "./ReviewForm";
@@ -25,6 +25,28 @@ function Home() {
 });
 
 const [reviewMessage, setReviewMessage] = useState("");
+const [approvedReviews, setApprovedReviews] = useState([]);
+
+useEffect(() => {
+  const loadApprovedReviews = async () => {
+    try {
+      const response = await fetch(
+        "https://gm-solar-app-1.onrender.com/api/reviews"
+      );
+
+      if (!response.ok) {
+        throw new Error("Could not load approved reviews.");
+      }
+
+      const data = await response.json();
+      setApprovedReviews(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  loadApprovedReviews();
+}, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -423,6 +445,40 @@ boxShadow: "0 12px 35px rgba(0,0,0,0.15)",
 </form>
 
 <ReviewForm />
+<div style={{ marginTop: "40px" }}>
+  <h2
+    style={{
+      textAlign: "center",
+      color: "#1d4ed8",
+      marginBottom: "20px",
+    }}
+  >
+    What Our Customers Say
+  </h2>
+
+  {approvedReviews.length === 0 ? (
+    <p style={{ textAlign: "center" }}>
+      No reviews yet.
+    </p>
+  ) : (
+    approvedReviews.map((review) => (
+      <div
+        key={review._id}
+        style={{
+          background: "#fff",
+          borderRadius: "10px",
+          padding: "20px",
+          marginBottom: "20px",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+        }}
+      >
+        <h3>{review.name}</h3>
+        <p>{"⭐".repeat(review.rating)}</p>
+        <p>{review.comment}</p>
+      </div>
+    ))
+  )}
+</div>
 
 
 
