@@ -9,6 +9,7 @@ function Quote() {
     service: "",
     date: "",
     time: "",
+    email: "",
   });
 
   const handleChange = (e) => {
